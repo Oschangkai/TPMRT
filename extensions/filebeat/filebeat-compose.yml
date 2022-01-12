@@ -29,6 +29,9 @@ services:
         source: /var/run/docker.sock
         target: /var/run/docker.sock
         read_only: true
+      - type: bind
+        source: ./extensions/filebeat/data
+        target: /var/log
     networks:
       - elk
     depends_on:
