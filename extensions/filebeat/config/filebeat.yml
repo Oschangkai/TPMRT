@@ -16,6 +16,9 @@ filebeat.inputs:
 
 processors:
   - add_cloud_metadata: ~
+  - drop_fields:
+      fields: ["agent.ephemeral_id", "agent.hostname", "agent.id", "agent.type", "agent.version", "ecs.version", "input.type", "version"]
+      ignore_missing: true
 
 output.logstash:
   enabled: true
