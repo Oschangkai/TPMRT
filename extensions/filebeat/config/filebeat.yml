@@ -13,6 +13,17 @@ filebeat.inputs:
   paths:
     - /var/log/mrt/臺北捷運每日分時各站OD流量統計資料_*.csv # 10601 ~ now - 2 
   tags: ["mrt", "mrt_data", "mrt_new", "mrt_tpe"]
+  fields:
+    filetype: mrt_data_tpe_new
+  fields_under_root: true
+- type: log
+  enabled: true
+  paths:
+    - /var/log/map/filtered-mrt-geo-mapping.csv
+  tags: ["mrt", "mrt_map", "mrt_tpe", "mapping"]
+  fields:
+    filetype: mrt_map_tpe_mapping
+  fields_under_root: true
 
 processors:
   - add_cloud_metadata: ~
